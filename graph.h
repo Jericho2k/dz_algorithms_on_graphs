@@ -1,3 +1,5 @@
+#pragma once
+
 // ===Imports===
 #include <iostream>
 #include <vector>

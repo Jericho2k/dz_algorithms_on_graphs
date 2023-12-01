@@ -1,6 +1,6 @@
-//===Imports===
-
 #pragma once
+
+//===Imports===
 #include<iostream>
 #include"graph.h"
 

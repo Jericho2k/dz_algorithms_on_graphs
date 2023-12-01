@@ -54,5 +54,7 @@ int main() {
     cout << "DFS with back edges algorithm";
     //DFSWithBackEdges CALL HERE
 
+    cin.get(); // to prevent the code from closing
+
     return 0;
 }
