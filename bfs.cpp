@@ -4,35 +4,6 @@
 #include <fstream>
 using namespace std;
 
-void breadthFirstSearch(vector<vector<int>>& graph, int startVertex) {
-    // Создаем стек для хранения вершин, которые нужно посетить
-    stack<int> vertexStack;
-  
-    // Создаем вектор для отслеживания посещенных вершин
-    vector<bool> visited(graph.size(), false);
-  
-    // Помещаем начальную вершину в стек
-    vertexStack.push(startVertex);
-  
-    // Помечаем начальную вершину как посещенную
-    visited[startVertex] = true;
-  
-    while (!vertexStack.empty()) {
-        // Получаем вершину из стека
-        int currentVertex = vertexStack.top();
-        vertexStack.pop();
-      
-        cout << currentVertex << " ";
-      
-        // Добавляем всех соседей текущей вершины, которые еще не посещены, в стек
-        for (int i = 0; i < graph.size(); i++) {
-            if (graph[currentVertex][i] == 1 && !visited[i]) {
-                vertexStack.push(i);
-                visited[i] = true;
-            }
-        }
-    }
-}
 void bfs(vector<vector<int>> adjacencyMatrix, int v){
     stack <int> vstak; 
     int sizeGraph=adjacencyMatrix.size();
@@ -68,7 +39,6 @@ int main() {
         read>>adjacencyMatrix[i][0]>>adjacencyMatrix[i][1]>>adjacencyMatrix[i][2]>>adjacencyMatrix[i][3]>>adjacencyMatrix[i][4]>>adjacencyMatrix[i][5];
         
     }
-    //bfs(adjacencyMatrix, 0);
-    breadthFirstSearch(adjacencyMatrix, 0);
+    bfs(adjacencyMatrix, 0);
     return 0;
 }
