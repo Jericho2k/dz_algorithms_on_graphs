@@ -1,33 +1,30 @@
 #include <vector>
-#include <stack>
+#include <queue>
 #include <iostream>
 #include <fstream>
 using namespace std;
 
 void bfs(vector<vector<int>> adjacencyMatrix, int v){
-    stack <int> vstak; 
+    queue <int> vqueue; 
     int sizeGraph=adjacencyMatrix.size();
     bool visited[sizeGraph];
     for (int i=0; i<sizeGraph; i++){
         visited[i]=false;
     }
-    vstak.push(v);
+    vqueue.push(v);
     visited[v]=true;
-    while (vstak.size()!=0){
-        stack <int> stack;
-        while (vstak.size()>0){
-            int vert=vstak.top();
+    while (vqueue.size()!=0){
+            int vert=vqueue.front();
             vector<int> listVert=adjacencyMatrix[vert];
             for (int i=0; i<listVert.size(); i++){
                 if (listVert[i]==1 && !visited[i]){
-                    stack.push(i);
+                    vqueue.push(i);
                     visited[i]=true;
                 }
             }
-            vstak.pop();
+            cout<<vqueue.front();
+            vqueue.pop();
         }
-        vstak=stack;
-    }  
 }
 
 int main() {
