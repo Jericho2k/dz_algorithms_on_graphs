@@ -1,28 +1,27 @@
-// ===Imports===
 #include "graph.h"
-using namespace std;
+#include "topsort.h"  
 
-// ===Implementation===
-Graph::Graph(int vertices) {
-    this->vertices = vertices;
-    initializeMatrix();
+Graph::Graph(int vertices) : vertices(vertices) {
+    adjacencyMatrix.resize(vertices, std::vector<int>(vertices, 0));
 }
-
-//
 void Graph::addEdge(int v, int w) {
-    adjacencyMatrix[v][w] = 1;
-    adjacencyMatrix[w][v] = 1;
-}
-
-void Graph::displayMatrix() {
-    for (int i = 0; i < vertices; ++i) {
-        for (int j = 0; j < vertices; ++j) {
-            cout << adjacencyMatrix[i][j] << " ";
-        }
-        cout << endl;
+    if (v >= 0 && v < vertices && w >= 0 && w < vertices) {
+        adjacencyMatrix[v][w] = 1; 
     }
 }
 
-void Graph::initializeMatrix() {
-    adjacencyMatrix.assign(vertices, vector<int>(vertices, 0));
+void Graph::topologicalSortDFSUtil(int v, std::vector<bool>& visited, std::stack<int>& stack) {
+    visited[v] = true;
+
+    for (int i = 0; i < vertices; ++i) {
+        if (adjacencyMatrix[v][i] && !visited[i]) {
+            topologicalSortDFSUtil(i, visited, stack);
+        }
+    }
+
+    stack.push(v);
+}
+
+int Graph::getVertices() const {
+    return vertices;
 }
