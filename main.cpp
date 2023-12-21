@@ -1,8 +1,11 @@
 //===Imports===
 
 #include<iostream>
+#include <chrono>
 #include"functions.h"
 #include"graph.h"
+#include"graph.cpp"
+#include "bfs.cpp"
 
 using namespace std;
 
@@ -15,8 +18,8 @@ int main() {
     graph.addEdge(0, 2);
     graph.addEdge(1, 3);
     graph.addEdge(2, 4);
-    graph.addEdge(3, 5);
-
+    graph.addEdge(0, 5);
+    vector<vector<int>> adjacencyMatrix = graph.getAdjacencyMatrix();
     //If additional functionality test is needed for your method add it in the dedicated section to not cause merge conflicts.
     //DFS | TEST DATA BELOW
     // - TEST -
@@ -39,8 +42,13 @@ int main() {
     //DSF CALL HERE
     cout << endl;
 
-    cout << "BFS algorithm";
+    cout << "BFS algorithm"<<endl;
     //BFS CALL HERE
+    auto start1 = std::chrono::system_clock::now();
+    bfs(adjacencyMatrix, 0);
+    auto end1 = std::chrono::system_clock::now();
+	auto duration1 = std::chrono::duration_cast<std::chrono::microseconds>(end1 - start1);
+	cout << "TIME: " << duration1.count() << " mcs" << endl;
     cout << endl;
 
     cout << "DFS with stack algorithm";

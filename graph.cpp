@@ -5,9 +5,11 @@ using namespace std;
 // ===Implementation===
 Graph::Graph(int vertices) {
     this->vertices = vertices;
-    initializeMatrix();
+  initializeMatrix();
 }
-
+vector<std::vector<int>> Graph:: getAdjacencyMatrix(){
+    return adjacencyMatrix;
+}
 //
 void Graph::addEdge(int v, int w) {
     adjacencyMatrix[v][w] = 1;
