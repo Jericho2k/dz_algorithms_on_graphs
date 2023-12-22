@@ -1,2 +1,2 @@
-# dz_algorithms_on_graphs.com/postavte25ballov
+# https://dz_po_grapham.com/postavte25ballov
 
